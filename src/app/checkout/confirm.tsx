@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
+import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
 const ConfirmPage = () => {
   const onNext = () => {
@@ -9,18 +10,14 @@ const ConfirmPage = () => {
     router.back();
   };
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView>
       <Text>This is the Confirm details page</Text>
       <CustomButton title="Submit" onPress={onNext} style={styles.button} />
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    flex: 1,
-  },
   button: {
     marginTop: "auto",
     marginBottom: 15,

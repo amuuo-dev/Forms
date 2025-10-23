@@ -1,8 +1,18 @@
 import React from "react";
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
 import CustomTextInput from "../../components/CustomTextInput";
+import { SafeAreaView } from "react-native-safe-area-context";
+import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 
 const PersonalDetailsForm = () => {
   const onNext = () => {
@@ -10,7 +20,7 @@ const PersonalDetailsForm = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAwareScrollView>
       <CustomTextInput label="Full name" placeholder="John Doe" />
       <CustomTextInput label="Address" placeholder="Address" />
       <View style={{ flexDirection: "row", gap: 5 }}>
@@ -32,19 +42,18 @@ const PersonalDetailsForm = () => {
       />
 
       <CustomButton title="Next" onPress={onNext} style={styles.button} />
-    </View>
+    </KeyboardAwareScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
-    flex: 1,
+    flexGrow: 1,
+    padding: 10,
     gap: 5,
   },
   button: {
     marginTop: "auto",
-    marginBottom: 15,
   },
 });
 
