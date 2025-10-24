@@ -1,4 +1,5 @@
 import { ComponentProps } from "react";
+import { useController } from "react-hook-form";
 import {
   TextInput,
   StyleSheet,
@@ -11,20 +12,28 @@ import {
 type CustomTextInputProps = {
   label?: string;
   containerStyle?: StyleProp<ViewStyle>;
+  name: string;
 } & ComponentProps<typeof TextInput>;
 
 const CustomTextInput = ({
   label,
   containerStyle,
+  name,
   ...textInputProps
 }: CustomTextInputProps) => {
-  const error = undefined;
+  const {
+    field: { value, onChange, onBlur },
+    fieldState: { error },
+  } = useController({ name });
 
   return (
     <View style={containerStyle}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         {...textInputProps}
+        value={value}
+        onBlur={onBlur}
+        onChangeText={onChange}
         style={[
           styles.input,
           textInputProps.style,
