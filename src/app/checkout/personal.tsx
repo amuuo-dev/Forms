@@ -4,12 +4,7 @@ import CustomButton from "../../components/CustomButton";
 import { router } from "expo-router";
 import CustomTextInput from "../../components/CustomTextInput";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
-import {
-  useForm,
-  SubmitHandler,
-  Controller,
-  FormProvider,
-} from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
@@ -30,7 +25,7 @@ const PersonalDetailsForm = () => {
     resolver: zodResolver(PersonalInformationSchema),
   });
 
-  console.log("errors from forms", form.formState.errors);
+  // console.log("errors from forms", form.formState.errors);
 
   const onNext: SubmitHandler<PersonalInfo> = (data) => {
     //need to validate the form
@@ -81,11 +76,6 @@ const PersonalDetailsForm = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 10,
-    gap: 5,
-  },
   button: {
     marginTop: "auto",
   },
