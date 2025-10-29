@@ -6,30 +6,23 @@ import CustomTextInput from "../../components/CustomTextInput";
 import KeyboardAwareScrollView from "../../components/KeyboardAwareScrollView";
 import { useForm, SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-
-const PersonalInformationSchema = z.object({
-  fullName: z
-    .string({ message: "fullName is required" })
-    .min(3, { message: "fullName must be longer that 3 characters" }),
-  address: z.string().min(1, { message: "please provide your Address" }),
-  city: z.string().min(1, { message: "City is required!" }),
-  postcode: z.string().min(1, { message: "Postal code is required!" }),
-  phone: z.string().min(1, { message: "Phone is required!" }),
-});
-
-type PersonalInfo = z.infer<typeof PersonalInformationSchema>;
+import {
+  PersonalInfo,
+  PersonalInformationSchema,
+  useCheckoutForm,
+} from "../../contexts/CheckoutFormProvider";
 
 const PersonalDetailsForm = () => {
+  const { setPersonalInfo, personalInfo } = useCheckoutForm();
+
   const form = useForm<PersonalInfo>({
     resolver: zodResolver(PersonalInformationSchema),
+    defaultValues: personalInfo,
   });
-
-  // console.log("errors from forms", form.formState.errors);
 
   const onNext: SubmitHandler<PersonalInfo> = (data) => {
     //need to validate the form
-    console.log("this is the data", data);
+    setPersonalInfo(data);
     router.push("/checkout/payment");
   };
 
