@@ -11,6 +11,8 @@ import {
   PersonalInformationSchema,
   useCheckoutForm,
 } from "../../contexts/CheckoutFormProvider";
+import countries from "../../../assets/countries.json";
+import CustomPicker from "../../components/CustomPicker";
 
 const PersonalDetailsForm = () => {
   const { setPersonalInfo, personalInfo } = useCheckoutForm();
@@ -51,6 +53,16 @@ const PersonalDetailsForm = () => {
             containerStyle={{ flex: 1 }}
           />
         </View>
+
+        <CustomPicker
+          name="country"
+          placeholder={{ label: "Select country" }}
+          items={countries.map((country) => ({
+            label: country.name,
+            value: country.code,
+          }))}
+        />
+
         <CustomTextInput
           label="Phone Number"
           name="phone"

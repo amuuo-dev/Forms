@@ -31,9 +31,9 @@ const CheckoutFormStepIndicator = () => {
             flex: 1,
             padding: 5,
           }}
+          key={eachStep.key}
         >
           <Text
-            key={eachStep.key}
             style={{
               fontWeight: "bold",
               textAlign: "center",

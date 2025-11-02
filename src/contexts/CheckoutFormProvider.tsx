@@ -1,7 +1,6 @@
 import { router } from "expo-router";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import * as z from "zod";
-import { id } from "zod/v4/locales";
 
 export const PersonalInformationSchema = z.object({
   fullName: z
@@ -10,6 +9,7 @@ export const PersonalInformationSchema = z.object({
   address: z.string().min(1, { message: "please provide your Address" }),
   city: z.string().min(1, { message: "City is required!" }),
   postcode: z.string().min(1, { message: "Postal code is required!" }),
+  country: z.string().length(2),
   phone: z.string().min(1, { message: "Phone is required!" }),
 });
 
