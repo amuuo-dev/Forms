@@ -11,6 +11,7 @@ import {
   PaymentInfo,
   useCheckoutForm,
 } from "../../contexts/CheckoutFormProvider";
+import CustomCheckbox from "../../components/CustomCheckbox";
 
 const PaymentDetailsForm = () => {
   const { setPaymentInfo, paymentInfo } = useCheckoutForm();
@@ -50,6 +51,8 @@ const PaymentDetailsForm = () => {
             inputMode="numeric"
           />
         </View>
+
+        <CustomCheckbox name="saveCard" label="Save Card Details" />
 
         <CustomButton
           title="Next"

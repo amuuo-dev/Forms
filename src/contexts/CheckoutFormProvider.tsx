@@ -25,6 +25,7 @@ export const PaymentSchema = z.object({
       "Please use the the MM/YY format"
     ),
   cvv: z.coerce.number().min(100).max(999),
+  saveCard: z.boolean().optional(),
 });
 
 export type PaymentInfo = z.infer<typeof PaymentSchema>;
