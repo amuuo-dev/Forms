@@ -13,6 +13,7 @@ import {
 } from "../../contexts/CheckoutFormProvider";
 import countries from "../../../assets/countries.json";
 import CustomPicker from "../../components/CustomPicker";
+import CustomDatePicker from "../../components/CustomDatePicker";
 
 const PersonalDetailsForm = () => {
   const { setPersonalInfo, personalInfo } = useCheckoutForm();
@@ -69,6 +70,8 @@ const PersonalDetailsForm = () => {
           placeholder="07123890033"
           inputMode="tel"
         />
+
+        <CustomDatePicker name="birthdate" />
 
         <CustomButton
           title="Next"

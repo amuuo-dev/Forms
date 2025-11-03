@@ -24,7 +24,7 @@ const ConfirmPage = () => {
             </View>
             {Object.entries(personalInfo).map(([key, value]) => (
               <Text key={key}>
-                {key}: {value}
+                {key}: {value?.toString()}
               </Text>
             ))}
           </View>
@@ -43,7 +43,7 @@ const ConfirmPage = () => {
             </View>
             {Object.entries(paymentInfo).map(([key, value]) => (
               <Text key={key}>
-                {key}: {value}
+                {key}: {value?.toString()}
               </Text>
             ))}
           </View>
